@@ -1,5 +1,8 @@
-exp = input()
+# 从result.out中读取化简后的表达式
+with open('result.out', 'r', encoding='utf-8') as f:
+    exp = f.read().strip()
 exp = exp.replace(' ','')
+print(exp)
 
 def unit(s: str, input: list[bool]):
     i=0
@@ -14,8 +17,10 @@ def unit(s: str, input: list[bool]):
         i+=1
     return res
 
-n = 4
+n = 10
 # 一个n位数，每一位为0或1，用程序枚举所有的组合情况
+m = 0
+minterms = []
 for i in range(2**n):
     s = bin(i)[2:]  # 转化为二进制字符串
     s = '0' * (n - len(s)) + s  # 前面补0
@@ -24,3 +29,8 @@ for i in range(2**n):
     for c in exp.split('+'):
         res = res or unit(c, input)
     print(f'{s} | {str(int(res))}')
+    if res:
+        m += 1
+        minterms.append(i)
+print(minterms)
+print(m)
