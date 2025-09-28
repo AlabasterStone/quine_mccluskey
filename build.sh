@@ -1,0 +1,1 @@
+clang++ -Xpreprocessor -fopenmp -I/opt/homebrew/Cellar/libomp/21.1.2/include -L/opt/homebrew/Cellar/libomp/21.1.2/lib -lomp qm_o3.cpp -o qm_o3 -O3 -march=armv8.5-a -std=c++17
